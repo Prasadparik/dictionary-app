@@ -1,0 +1,23 @@
+.title {
+  font-size: 3vw;
+  margin-top: 5rem;
+}
+
+.appbar {
+  background: linear-gradient(
+    90deg,
+    rgba(57, 189, 174, 1) 0%,
+    rgba(61, 203, 164, 1) 47%,
+    rgba(65, 218, 157, 1) 100%
+  );
+  /* 
+  background: rgb(132, 0, 255);
+  background: linear-gradient(
+    90deg,
+    rgba(132, 0, 255, 1) 0%,
+    rgba(145, 0, 255, 1) 100%
+  ); */
+  /* background: #fff !important;
+  color: black !important;
+  box-shadow: 0 0 2px 0 #ccc !important; */
+}

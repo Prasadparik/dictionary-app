@@ -1,23 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import "./App.css";
+import { Container } from "@material-ui/core";
+import Header from "./components/Header/Header";
+import Search from "./components/Search";
+import { UserContext } from "./context/UserContext";
 
 function App() {
+  const [mean, setMean] = useState(null);
+  const [word, setWord] = useState("");
+
+  const dictionaryAPI = async () => {
+    try {
+      const { data } = await axios.get(
+        `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
+      );
+      const wordData = data;
+      console.log("DATA :", wordData);
+      setMean(wordData[0]);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  console.log("MEAN :", mean);
+
+  useEffect(() => {
+    dictionaryAPI();
+  }, [word]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Container maxWidth="lg" className="container">
+        <UserContext.Provider value={{ word, setWord, mean, setMean }}>
+          <Header />
+          <Search />
+        </UserContext.Provider>
+      </Container>
     </div>
   );
 }
