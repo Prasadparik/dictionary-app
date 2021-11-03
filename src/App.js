@@ -31,12 +31,12 @@ function App() {
 
   return (
     <div className="App">
-      <Container maxWidth="lg" className="container">
-        <UserContext.Provider value={{ word, setWord, mean, setMean }}>
-          <Header />
+      <UserContext.Provider value={{ word, setWord, mean, setMean }}>
+        <Header />
+        <Container maxWidth="md" className="container">
           <Search />
-        </UserContext.Provider>
-      </Container>
+        </Container>
+      </UserContext.Provider>
     </div>
   );
 }
