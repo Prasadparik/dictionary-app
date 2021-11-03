@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 
 import {
   TextField,
@@ -12,9 +12,22 @@ import {
 import { UserContext } from "../context/UserContext";
 import VolumeUpIcon from "@material-ui/icons/VolumeUp";
 
+import { Howl, Howler } from "howler";
+
 const Search = () => {
   const context = useContext(UserContext);
   const data = context.mean;
+
+  const audio = context.aud;
+
+  const soundPlay = (src) => {
+    const sound = new Howl({
+      src,
+      html5: true,
+    });
+    sound.play();
+  };
+
   return (
     <Box style={{ padding: "1rem" }}>
       <Box className="input-box">
@@ -35,7 +48,20 @@ const Search = () => {
             style={{ padding: "1rem 2rem", marginTop: "1rem" }}
           >
             <h1 style={{ flexGrow: "1", margin: "0" }}> {data.word}</h1>
-            <VolumeUpIcon className="speech" fontSize="large" />
+
+            {/* <VolumeUpIcon
+              className="speech"
+              fontSize="large"
+              // onClick={() => soundPlay(wordAudio)}
+            /> */}
+
+            {audio !== undefined ? (
+              <VolumeUpIcon
+                className="speech"
+                fontSize="large"
+                onClick={() => soundPlay(`https:${audio}`)}
+              />
+            ) : null}
           </Paper>
           <Paper className="definition">
             <b>

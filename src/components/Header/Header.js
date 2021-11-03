@@ -9,8 +9,6 @@ import {
 import React from "react";
 import "./Header.css";
 
-
-
 const Header = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -28,7 +26,7 @@ const Header = () => {
           <Typography variant="h6" component="div" style={{ flexGrow: "1" }}>
             DICTIONARY
           </Typography>
-          <Button color="inherit">Login</Button>
+          {/* <Button color="inherit">Login</Button> */}
         </Toolbar>
       </AppBar>
     </Box>

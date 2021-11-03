@@ -9,6 +9,7 @@ import { UserContext } from "./context/UserContext";
 function App() {
   const [mean, setMean] = useState(null);
   const [word, setWord] = useState("");
+  const [aud, setAud] = useState(null);
 
   const dictionaryAPI = async () => {
     try {
@@ -17,21 +18,32 @@ function App() {
       );
       const wordData = data;
       console.log("DATA :", wordData);
-      setMean(wordData[0]);
+      await setMean(wordData[0]);
+
+      const voice = mean.phonetics[0].audio;
+      setAud(voice);
     } catch (error) {
       console.error(error);
     }
   };
 
+  // const addSound = () => {
+  //   const voice = mean.phonetics[0].audio;
+  //   setAud(voice);
+  // };
+
   console.log("MEAN :", mean);
+  console.log("AUDIO OF WORD :", aud);
 
   useEffect(() => {
     dictionaryAPI();
-  }, [word]);
+  }, [word, aud]);
 
   return (
     <div className="App">
-      <UserContext.Provider value={{ word, setWord, mean, setMean }}>
+      <UserContext.Provider
+        value={{ word, setWord, mean, setMean, aud, setAud }}
+      >
         <Header />
         <Container maxWidth="md" className="container">
           <Search />
