@@ -68,3 +68,7 @@ hr {
   padding: 1rem;
   border-radius: 0.5rem;
 }
+
+.search {
+  width: 100%;
+}

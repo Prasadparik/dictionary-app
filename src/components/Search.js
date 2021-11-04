@@ -13,6 +13,7 @@ import { UserContext } from "../context/UserContext";
 import VolumeUpIcon from "@material-ui/icons/VolumeUp";
 
 import { Howl, Howler } from "howler";
+import Language from "./Language";
 
 const Search = () => {
   const context = useContext(UserContext);
@@ -32,6 +33,7 @@ const Search = () => {
     <Box style={{ padding: "1rem" }}>
       <Box className="input-box">
         <TextField
+          className="search"
           placeholder="Search"
           onChange={(e) => context.setWord(e.target.value)}
           variant="standard"

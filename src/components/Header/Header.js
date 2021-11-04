@@ -7,6 +7,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import React from "react";
+import Options from "../Options";
 import "./Header.css";
 
 const Header = () => {
@@ -23,10 +24,11 @@ const Header = () => {
           >
             <MenuIcon />
           </IconButton> */}
-          <Typography variant="h6" component="div" style={{ flexGrow: "1" }}>
+          <Typography variant="body" component="div" style={{ flexGrow: "1" }}>
             DICTIONARY
           </Typography>
           {/* <Button color="inherit">Login</Button> */}
+          <Options />
         </Toolbar>
       </AppBar>
     </Box>
